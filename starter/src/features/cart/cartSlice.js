@@ -13,17 +13,20 @@ const initialState = {
 };
 console.log(initialState);
 
-export const getCartItems = createAsyncThunk("cart/getCartItems", async (name, thunkAPI) => {
-  // console.log(thunkAPI)
-  // console.log(thunkAPI.getState())
-  try {
-    // thunkAPI.dispatch(openModal())
-    const resp = await axios(url)
-    return resp.data
-  } catch (error) {
-    return thunkAPI.rejectWithValue('something went wrong')
+export const getCartItems = createAsyncThunk(
+  "cart/getCartItems",
+  async (name, thunkAPI) => {
+    // console.log(thunkAPI)
+    // console.log(thunkAPI.getState())
+    try {
+      // thunkAPI.dispatch(openModal())
+      const resp = await axios(url);
+      return resp.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue("something went wrong");
+    }
   }
-});
+);
 
 const cartSlice = createSlice({
   name: "cart",
@@ -54,7 +57,6 @@ const cartSlice = createSlice({
       state.amount = amount;
       state.total = total;
     },
-    
   },
   extraReducers: {
     [getCartItems.pending]: (state) => {
