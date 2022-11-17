@@ -11,6 +11,7 @@ const initialState = {
   total: 0,
   isLoading: true,
 };
+console.log(initialState);
 
 export const getCartItems = createAsyncThunk("cart/getCartItems", async (name, thunkAPI) => {
   // console.log(thunkAPI)
